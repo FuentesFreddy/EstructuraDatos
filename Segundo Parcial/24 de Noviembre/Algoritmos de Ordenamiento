@@ -1,0 +1,51 @@
+Bubble Sort se basa en la idea de hacer múltiples recorridos por el arreglo. En
+cada recorrido:
+•Compara A[j] con A[j+1]
+•Realiza un intercambio si están mal ordenados
+•Repite esto n−1 veces
+En la primera pasada, el elemento más grande sube al final.
+
+pra i=0 hasta n-2
+  huboSwap = falso
+  para j = 0 hasta n-2-i
+    si (A[j]>A[j+1])
+      swap(A[j],A[j+1])
+      huboSwap = verdadero
+    sino
+      huboSwap:terminar
+############################################################################
+Insertion Sort
+para i=1 hasta n-1
+  calve= A[i]
+  j=i-1
+  mientras(j>=0 y A[j]>clave)
+    A[j+1]=A[j]
+    j--
+  A[j+1] = clave
+############################################################################
+Selection Sort
+Para estrucuturas grandes
+Izquierda ordenada derecha no procesada
+Realiza un swap por iteracion
+para i=0 hasta n-2
+  min=i
+  para j=i+1 hasta n-1
+    si(A[j]<A[min])
+      min=j
+  swap(A[i],A[min])
+###########################################################################
+Quick Sort
+//Buscar articulos de algorirmos ()
+Divide y venceras 
+Selecciona una pivote(recursividad)
+Reorganiza lo menores estan a la izquierda y los mayores a la derecha
+Aplica recursion a cada sublista generada
+//Como puedo ordenar un conjunto de palabras por medio de arboles
+
+###########################################################################
+Merge Sort
+Se mueve Nodos y no los datos fisicos directamente 
+// Hacer los algoritmos de ordenacion con direcciones fisicas de memoria 
+
+###########################################################################
+Heap Sort
