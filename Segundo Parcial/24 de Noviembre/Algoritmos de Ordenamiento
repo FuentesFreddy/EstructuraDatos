@@ -11,7 +11,7 @@ pra i=0 hasta n-2
     si (A[j]>A[j+1])
       swap(A[j],A[j+1])
       huboSwap = verdadero
-    sino
+  sino
       huboSwap:terminar
 ############################################################################
 Insertion Sort
