@@ -3,11 +3,11 @@ using namespace std;
 
 void insertion(int vector[],int n){
     for(int i=1; i<n ; i++){ // hasta n porque debe iterar todos los elementos 
-        int clave = vector[i];
+        int clave = vector[i]; //clave es el valor actual
         int j = i-1; //j se ubica una posicion antes del elemento clave para iterar
-        while(j>=0 && vector[j]>clave){ //repetir hasta que llegue al inicio del vector y la posicion actual sea mayor que la clave
-            vector[j+1] = vector[j];
-            j--;
+        while(j>=0 && vector[j]>clave){ //repetir hasta que llegue al inicio del vector y la posicion izquierda sea mayor que el actual
+            vector[j+1] = vector[j]; //hacemos hueco
+            j--; //recorro hacia atras
         }
         vector[j+1] = clave;
     }
