@@ -1,0 +1,75 @@
+#include <iostream>
+#include <vector>
+#include <algorithm> // Necesario para std::max_element
+
+using namespace std;
+
+// Función auxiliar para realizar Counting Sort basado en el dígito representado por exp
+void countingSort(vector<int>& arr, int exp) {
+    int n = arr.size();
+    
+    // El vector de salida que tendrá los números ordenados
+    vector<int> output(n); 
+    
+    // Inicializar el arreglo de conteo con 0 (tamaño 10 para dígitos 0-9)
+    int count[10] = {0};
+
+    // Almacenar el conteo de ocurrencias en count[]
+    for (int i = 0; i < n; i++) {
+        int index = arr[i] / exp;
+        count[index % 10]++;
+    }
+
+    // Cambiar count[i] para que ahora contenga la posición real 
+    // de este dígito en el arreglo de salida
+    for (int i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
+    }
+
+    // Construir el arreglo de salida
+    // NOTA: Se recorre hacia atrás para mantener la estabilidad del ordenamiento,
+    // lo cual es crucial para que Radix Sort funcione correctamente.
+    for (int i = n - 1; i >= 0; i--) {
+        int index = arr[i] / exp;
+        output[count[index % 10] - 1] = arr[i];
+        count[index % 10]--;
+    }
+
+    // Copiar el arreglo de salida a arr[], para que arr contenga 
+    // los números ordenados según el dígito actual
+    for (int i = 0; i < n; i++) {
+        arr[i] = output[i];
+    }
+}
+
+// Función principal para hacer Radix Sort
+void radixSort(vector<int>& arr) {
+    // Si el arreglo está vacío, no hacemos nada
+    if (arr.empty()) return;
+
+    // Encontrar el número máximo para saber la cantidad de dígitos
+    // *max_element devuelve un iterador, el * obtiene el valor
+    int m = *max_element(arr.begin(), arr.end());
+
+    // Hacer counting sort para cada dígito. 
+    // exp es 10^i donde i es el número de dígito actual (1, 10, 100, etc.)
+    for (int exp = 1; m / exp > 0; exp *= 10) {
+        countingSort(arr, exp);
+    }
+}
+
+// Código conductor (Driver code)
+int main() {
+    vector<int> arr = {170, 45, 75, 90, 802, 24, 2, 66};
+    
+    // Llamada a la función
+    radixSort(arr);
+    
+    // Imprimir el arreglo ordenado
+    for (int i = 0; i < arr.size(); i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    
+    return 0;
+}
