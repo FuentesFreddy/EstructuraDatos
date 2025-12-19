@@ -1,0 +1,29 @@
+void guardarEnVector(Nodo* raiz, vector<int>& nodos) {
+    if (raiz == nullptr) return;
+    guardarEnVector(raiz->izq, nodos);
+    nodos.push_back(raiz->dato);
+    guardarEnVector(raiz->dere, nodos);
+}
+
+
+Nodo* construirBalanceado(vector<int>& nodos, int inicio, int fin) {
+    if (inicio > fin) return nullptr;
+
+    int medio = (inicio + fin) / 2;
+
+    Nodo* nuevo = crearNodo(nodos[medio], nullptr); 
+
+    nuevo->izq = construirBalanceado(nodos, inicio, medio - 1);
+    nuevo->dere = construirBalanceado(nodos, medio + 1, fin);
+
+    return nuevo;
+}
+
+Nodo* balancearArbol(Nodo* raiz) {
+    vector<int> nodos;
+    
+    guardarEnVector(raiz, nodos);
+
+    int n = nodos.size();
+    return construirBalanceado(nodos, 0, n - 1);
+}
