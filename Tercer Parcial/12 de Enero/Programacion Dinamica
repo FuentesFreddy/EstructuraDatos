@@ -1,0 +1,8 @@
+Sintaxis General
+
+int dp[n+1];
+dp[0]=casoBase;
+for(int i=1; 1<=n; i++){
+    dp[i]=combinacion(dp[i-1],dp[1-2]);
+}
+
