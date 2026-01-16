@@ -6,3 +6,10 @@ for(int i=1; 1<=n; i++){
     dp[i]=combinacion(dp[i-1],dp[1-2]);
 }
 
+Backtraking 
+Explora todas las posibles soluciones, pero retyrocede cuando el camino tomado no da una sol valida.
+Se usa para EXPLORACIONES Y COMBIACIONES.
+PASOS:
+1. Construir sol parcial
+2. Verificar validez de sol
+
